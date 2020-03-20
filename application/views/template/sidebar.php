@@ -40,7 +40,7 @@
 
                                         <li><a href="<?php echo base_url(); ?>Movimientos/Ventas"><i class="fa fa-circle-o"></i> Ventas</a></li>
                                         <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Compras</a></li>
-                                        
+                                        <li><a href="<?php echo base_url(); ?>Movimientos/Facturacion"><i class="fa fa-circle-o"></i> Facturas prueba</a></li>
 
                                     </ul>
                                 </li>
