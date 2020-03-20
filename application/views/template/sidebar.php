@@ -18,24 +18,49 @@
 
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <?php if ($this->session->userdata('rol') == 'administrador total') : ?>
-                                    <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="<?php echo base_url() ?>">Dashboard</a></li>
 
-                                        </ul>
-                                    </li>
-                                <?php endif; ?>
-                                <li><a><i class="fa fa-edit"></i> Formularios <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <?php if ($this->session->userdata('rol') == 'administrador total') : ?>
-                                            <li><a href="<?php echo base_url(); ?>Formularios/Usuarios">Usuarios</a></li>
-                                        <?php endif; ?>
-                                        <?php if (($this->session->userdata('rol') == 'administrador total') || ($this->session->userdata('rol') == 'administrador condominio')) : ?>
-                                            <li><a href="<?php echo base_url(); ?>Formularios/Copropietario"></i>Copropietario del condominio</a></li>
-                                            <li><a href="<?php echo base_url() ?>Formularios/Categoria_visita">Cateogira de Visitas</a></li>
-                                        <?php endif; ?>
-                                        <li><a href="<?php echo base_url() ?>Formularios/Control">Control del condominio</a></li>
+                                        <li><a href="<?php echo base_url() ?>">Dashboard</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li><a><i class="fa fa-cogs"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+
+                                        <li><a href="<?php echo base_url(); ?>Mantenimiento/Categorias"><i class="fa fa-circle-o"></i> Categorias</a></li>
+                                        <li><a href="<?php echo base_url(); ?>Mantenimiento/Clientes"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                                        <li><a href="<?php echo base_url(); ?>Mantenimiento/Productos"><i class="fa fa-circle-o"></i> Productos</a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-share-alt"></i> Movimientos <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+
+                                        <li><a href="<?php echo base_url(); ?>Movimientos/Ventas"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                                        <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Compras</a></li>
+                                        
+
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-print"></i> Reportes <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+
+                                        <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                                        <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Productos</a></li>
+                                        <li><a href="<?php echo base_url(); ?>Reportes/Ventas"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                                        
+
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-user"></i> Administrador <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+
+                                        <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Tipo de documentos</a></li>
+                                        <li><a href="<?php echo base_url(); ?>Administrador/Usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                                        <li><a href="<?php echo base_url(); ?>Administrador/Permisos"><i class="fa fa-circle-o"></i> Permisos</a></li>
+                                        
 
                                     </ul>
                                 </li>

@@ -21,24 +21,12 @@ class Usuario_model extends CI_Model
     }
     public function getUsuarios()
     {
-        if ($this->session->userdata('rol') === 'administrador total') {
-            $this->db->select('u.*, r.nombre as tiporol, r.descripcion');
-            $this->db->from('usuarios u');
-            $this->db->join('roles r', 'r.id_roles = u.id_roles');
-            $this->db->where('u.estado', '1');
-            $resultado = $this->db->get();
-
-            return $resultado->result();
-        } else {
-            $this->db->select('u.*, r.nombre as tiporol, r.descripcion');
-            $this->db->from('usuarios u');
-            $this->db->join('roles r', 'r.id_roles = u.id_roles');
-            $this->db->where('u.estado', '1');
-            $this->db->where_not_in('r.nombre', 'administrador total');
-            $resultado = $this->db->get();
-
-            return $resultado->result();
-        }
+        $this->db->select("u.*, r.nombres as roles");
+        $this->db->from("usuarios u");
+        $this->db->join("roles r", "u.id_roles = r.id_roles");
+        $this->db->where("u.estado", "1");
+        $resultados = $this->db->get();
+        return $resultados->result();
     }
     public function validarCi($ci)
     {
@@ -57,42 +45,29 @@ class Usuario_model extends CI_Model
             return true;
         }
     }
-    public function guardarUsuario($datosUsuario, $rol)
+    public function getRoles()
     {
-        $this->db->where('nombre', $rol);
-        $resultado = $this->db->get('roles')->row();
-
-        $datosUsuario['id_roles'] = $resultado->id_roles;
-
-        return $this->db->insert('usuarios', $datosUsuario);
+        $resultados= $this->db->get("roles");
+        return $resultados->result();
+    }
+    public function guardar($data)
+    {
+       return $this->db->insert('usuarios',$data);
     }
     public function getUsuario($id_usuario)
     {
-        $this->db->select('u.*, r.nombre as tiporol');
-        $this->db->from('usuarios u');
-        $this->db->join('roles r', 'r.id_roles = u.id_roles');
-        $this->db->where('u.estado', '1');
-        $this->db->where('u.id_usuarios', $id_usuario);
-        $resultado = $this->db->get()->row();
-
-        if (isset($resultado)) {
-            return $resultado;
-        } else {
-            return false;
-        }
+        $this->db->select("u.*, r.nombres as roles");
+        $this->db->from("usuarios u");
+        $this->db->join("roles r", "u.id_roles = r.id_roles");
+        $this->db->where("u.id_usuarios",$id_usuario);
+        $this->db->where("u.estado", "1");
+        $resultado = $this->db->get();
+        return $resultado->row();
     }
-    public function actualizar($id_usuarios, $rol, $datos)
+    public function actualizar($idusuario ,$data)
     {
-        $this->db->where('nombre', $rol);
-        $rol = $this->db->get('roles')->row();
-        $datos['id_roles'] = $rol->id_roles;
-
-        $this->db->where('id_usuarios', $id_usuarios);
-        return $this->db->update('usuarios', $datos);
-    }
-    public function borrar($id_usuarios, $datos)
-    {
-        $this->db->where('id_usuarios', $id_usuarios);
-        return $this->db->update('usuarios', $datos);
+        $this->db->where("id_usuarios",$idusuario);
+       return $this->db->update("usuarios",$data);
+        
     }
 }

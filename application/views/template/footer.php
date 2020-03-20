@@ -11,6 +11,8 @@
 
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/template/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="<?php echo base_url(); ?>assets/template/jquery-ui/jquery-ui.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url(); ?>assets/template/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
