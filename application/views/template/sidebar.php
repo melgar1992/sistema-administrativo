@@ -58,6 +58,7 @@
                                     <ul class="nav child_menu">
 
                                         <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Tipo de documentos</a></li>
+                                        <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Configuracion de la empresa</a></li>
                                         <li><a href="<?php echo base_url(); ?>Administrador/Usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                                         <li><a href="<?php echo base_url(); ?>Administrador/Permisos"><i class="fa fa-circle-o"></i> Permisos</a></li>
                                         
