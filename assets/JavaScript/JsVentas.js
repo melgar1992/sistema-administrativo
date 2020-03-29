@@ -9,7 +9,11 @@ $(document).ready(function() {
             $('#idcomprobante').val(infocomprobante[0]);
             $('#igv').val(infocomprobante[2]);
             $('#serie').val(infocomprobante[3]);
-            $('#numero').val(generarNumero(infocomprobante[1]));;
+            $('#numero').val(infocomprobante[1]);
+            $('#numero_autorizacion').val(infocomprobante[4]);
+            $('#nit_ci').val(infocomprobante[5]);
+            $('#llave_dosificacion').val(infocomprobante[6]);
+            $('#fecha_limite').val(infocomprobante[7]);
         } else {
             $('#idcombrobante').val(null);
             $('#igv').val(null);
@@ -73,7 +77,7 @@ $(document).ready(function() {
         $(this).closest("tr").remove();
         sumar();
     });
-    $(document).on("keyup", "#tbventas input.cantidades", function() {
+    $(document).on("change", "#tbventas input.cantidades", function() {
 
 
         cantidad = $(this).val();

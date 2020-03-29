@@ -36,13 +36,17 @@
                                               <select name="comprobantes" id="comprobantes" class="form-control" required>
                                                   <option value="">Seleccione...</option>
                                                   <?php foreach ($tipocomprobantes as $tipocomprobante) : ?>
-                                                      <?php $datacomprobante = $tipocomprobante->id_tipo_comprobante . "*" . $tipocomprobante->cantidad . "*" . $tipocomprobante->igv . "*" . $tipocomprobante->serie; ?>
+                                                      <?php $datacomprobante = $tipocomprobante->id_tipo_comprobante . "*" . $tipocomprobante->cantidad . "*" . $tipocomprobante->igv . "*" . $tipocomprobante->serie. "*" . $tipocomprobante->numero_autorizacion. "*" . $tipocomprobante->nit_ci. "*" . $tipocomprobante->llave_dosificacion. "*" . $tipocomprobante->fecha_limite; ?>
                                                       <option value="<?php echo $datacomprobante; ?>">
                                                           <?php echo $tipocomprobante->nombre ?></option>
                                                   <?php endforeach; ?>
                                               </select>
                                               <input type="hidden" id="idcomprobante" name="idcomprobante">
                                               <input type="hidden" id="igv">
+                                              <input type="hidden" id="numero_autorizacion">
+                                              <input type="hidden" id="nit_ci">
+                                              <input type="hidden" id="llave_dosificacion">
+                                              <input type="hidden" id="fecha_limite">
                                           </div>
                                           <div class="col-md-3">
                                               <label for="">Serie:</label>
@@ -67,19 +71,27 @@
                                           </div>
                                           <div class="col-md-3">
                                               <label for="">Fecha:</label>
-                                              <input type="date" class="form-control" name="fecha" required>
+                                              <input type="date" value="<?php echo date("Y-m-d") ?>" class="form-control" name="fecha" required>
                                           </div>
                                       </div>
+                                     
+                                      <label for="Productos" class="col-md-12">Buscar y agregar productos o servicios</label>
+                                      <br></br>
                                       <div class="form-group">
-                                          <div class="col-md-6">
+                                          <div class="col-md-4">
                                               <label for="">Producto:</label>
                                               <input type="text" class="form-control" id="producto">
+                                          </div>
+                                          <div class="col-md-4">
+                                              <label for="">Codigo producto:</label>
+                                              <input type="text" class="form-control" id="codigo_producto">
                                           </div>
                                           <div class="col-md-2">
                                               <label for="">&nbsp;</label>
                                               <button id="btn-agregar" type="button" class="btn btn-success btn-flat btn-block"><span class="fa fa-plus"></span> Agregar</button>
                                           </div>
                                       </div>
+                                     <br></br>
                                       <table id="tbventas" class="table table-bordered table-striped table-hover">
                                           <thead>
                                               <tr>

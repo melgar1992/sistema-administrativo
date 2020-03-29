@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'session', 'form_validation', 'Upload','encryption','AllegedRC4','Base64SIN','ControlCode','Verhoeff');
+$autoload['libraries'] = array('database', 'session', 'form_validation', 'Upload','encryption','AllegedRC4','Base64SIN','ControlCode','Verhoeff','QR_BarCode');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Usuario_model','Categorias_model','Productos_model','Clientes_model','Ventas_model','Permisos_model');
+$autoload['model'] = array('Usuario_model','Categorias_model','Productos_model','Clientes_model','Ventas_model','Permisos_model','Empresa_model');
