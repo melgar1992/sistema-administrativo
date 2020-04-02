@@ -169,6 +169,7 @@
                               <th>#</th>
                               <th>Nombre</th>
                               <th>Documento</th>
+                              <th>Numero</th>
                               <th>Opcion</th>
                           </tr>
                       </thead>
@@ -178,6 +179,7 @@
                                   <tr>
                                       <td><?php echo $cliente->id_clientes; ?></td>
                                       <td><?php echo $cliente->nombres; ?></td>
+                                      <td><?php echo $cliente->tipodocumento; ?></td>
                                       <td><?php echo $cliente->num_documento; ?></td>
                                       <?php $dataCliente = $cliente->id_clientes . "*" . $cliente->nombres . "*" . $cliente->tipocliente . "*" . $cliente->tipodocumento . "*" . $cliente->num_documento . "*" . $cliente->telefono . "*" . $cliente->direccion; ?>
 

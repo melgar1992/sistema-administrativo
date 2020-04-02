@@ -8,7 +8,8 @@ class Empresa_model extends CI_Model
     }
     public function guardarEmpresa($datosEmpresa)
     {
-        $this->db->where('id_empresa', '1');
+        $this->db->where('nombre', 'Factura');
+        $this->db->where('estado','1');
         $resultado = $this->db->get('empresa')->row();
         if (isset($resultado)) {
             $this->db->where('id_empresa', '1');
@@ -25,6 +26,7 @@ class Empresa_model extends CI_Model
     public function guardarDatosFactura($datosFactura)
     {
         $this->db->where('nombre', 'Factura');
+        $this->db->where('estado'.'1');
         $resultado = $this->db->get('tipo_comprobante')->row();
         if (isset($resultado)) {
             $this->db->where('nombre', 'Factura');

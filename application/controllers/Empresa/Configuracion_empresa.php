@@ -65,10 +65,12 @@ class Configuracion_empresa extends BaseController
        
         if ($this->form_validation->run()) {
             $DatosFactura = array(
+                
                 'numero_autorizacion' => $numero_autorizacion,
                 'nit_ci' => $nit_ci,
                 'llave_dosificacion' => $llave_dosificacion,
                 'fecha_limite' => $fecha,
+                'fecha_edicion' => date('Y-m-d H:i:s'),
                 
             );
             if ($this->Empresa_model->guardarDatosFactura($DatosFactura)) {

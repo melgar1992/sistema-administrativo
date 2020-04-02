@@ -34,6 +34,14 @@ class Ventas extends BaseController
         $valor = $this->input->post("valor");
         $productos = $this->Ventas_model->getProductos($valor);
         echo json_encode($productos);
+        
+    }
+    public function getProductosCodigo()
+    {
+        $valor = $this->input->post("valor");
+        $productos = $this->Ventas_model->getProductosCodigo($valor);
+        echo json_encode($productos);
+        
     }
     public function guardar()
     {

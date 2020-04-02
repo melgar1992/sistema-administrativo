@@ -24,12 +24,14 @@ class CLientes extends BaseController
         $id_tipoCliente = $this->input->post("tipocliente");
         $tipodocumento = $this->input->post("tipodocumento");
         $numdocumento = $this->input->post("numero_documento");
+
         $telefono = $this->input->post("telefono");
         $direccion = $this->input->post("direccion");
 
         $this->form_validation->set_rules('nombres', 'Nombre del cliente', 'required');
         $this->form_validation->set_rules('tipocliente', 'Tipo de cliente', 'required');
         $this->form_validation->set_rules('tipodocumento', 'Tipo de documento', 'required');
+
         $this->form_validation->set_rules('numero_documento', 'Numero de documento', 'required|is_unique[clientes.num_documento]');
 
         if ($this->form_validation->run()) {
@@ -68,6 +70,7 @@ class CLientes extends BaseController
         $id_tipoCliente = $this->input->post("tipocliente");
         $tipodocumento = $this->input->post("tipodocumento");
         $numdocumento = $this->input->post("numero_documento");
+
         $telefono = $this->input->post("telefono");
         $direccion = $this->input->post("direccion");
 
@@ -83,6 +86,7 @@ class CLientes extends BaseController
         $this->form_validation->set_rules('nombres', 'Nombre del cliente', 'required');
         $this->form_validation->set_rules('tipocliente', 'Tipo de cliente', 'required');
         $this->form_validation->set_rules('tipodocumento', 'Tipo de documento', 'required');
+
         $this->form_validation->set_rules('numero_documento', 'Numero de documento', 'required' . $is_unique);
 
         if ($this->form_validation->run()) {
@@ -95,6 +99,7 @@ class CLientes extends BaseController
                 'direccion' => $direccion,
                 'num_documento' => $numdocumento,
 
+
             );
 
             if ($this->Clientes_model->actualizar($id_clientes, $data)) {
@@ -103,7 +108,7 @@ class CLientes extends BaseController
                 $this->session->set_flashdata("error", "No se pudo actualizar la informacion");
                 redirect(base_url() . "Mantenimiento/clientes/editar" . $id_clientes);
             }
-        }else {
+        } else {
             $this->editar($id_clientes);
         }
     }
