@@ -71,12 +71,5 @@ case ($n >= 1000000): return millones($n);
 }
 }
 
-$html ='';
-if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-$html = "
-<p class='centrado'>".$_POST['numero'].' se escribe ';
-$html.= '<b>'.ucfirst(convertir($_POST['numero'])).'</b>
-';
-echo $html;
-}
+
 ?>

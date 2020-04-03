@@ -1,5 +1,25 @@
 $(document).ready(function () {
-	var base_url = $("#base_url").val();
+    var base_url = $("#base_url").val();
+    $('#tablaProdcutos').DataTable({
+        responsive: "true",
+        "language": {
+          'lengthMenu': "Mostrar _MENU_ registros",
+          "zeroRecords": "No se encontraron resultados",
+          "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registro",
+          "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+          "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+          "sSearch": "Buscar",
+          "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Ultimo",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior",
+
+          },
+          "sProcesing": "Procesando...",
+        }
+
+      });
 	$('#comprobantes').on('change', function () {
 		option = $(this).val();
 
@@ -32,6 +52,13 @@ $(document).ready(function () {
 		$("#idcliente").val(infocliente[0]);
 		$("#cliente").val(infocliente[1]);
 		$("#modal-default").modal("hide");
+    });
+    $(document).on("click", ".btn-check-producto", function () {
+
+		producto = $(this).val();
+        $("#btn-agregar").val(producto);
+        agregarProducto();
+		$("#modal-productos").modal("hide");
 	});
 	$("#producto").autocomplete({
 		source: function (request, response) {
@@ -47,7 +74,7 @@ $(document).ready(function () {
 				}
 			});
 		},
-		minLength: 2,
+		minLength: 3,
 		select: function (event, ui) {
 			data = ui.item.id_productos + "*" + ui.item.codigo + "*" + ui.item.label + "*" + ui.item.precio + "*" + ui.item.stock;
 			$("#btn-agregar").val(data);
@@ -56,7 +83,7 @@ $(document).ready(function () {
     $("#codigo_producto").autocomplete({
 		source: function (request, response) {
 			$.ajax({
-				url: base_url + "Movimientos/Ventas/getProductos",
+				url: base_url + "Movimientos/Ventas/getProductosCodigo",
 				type: "POST",
 				dataType: "json",
 				data: {
@@ -67,7 +94,7 @@ $(document).ready(function () {
 				}
 			});
 		},
-		minLength: 1,
+		minLength: 3,
 		select: function (event, ui) {
 			data = ui.item.id_productos + "*" + ui.item.codigo + "*" + ui.item.label + "*" + ui.item.precio + "*" + ui.item.stock;
 			$("#btn-agregar").val(data);
@@ -86,10 +113,10 @@ $(document).ready(function () {
 			html += "<td><input type ='hidden' name = 'importes[]' value ='" + infoproducto[3] + "'><p>" + infoproducto[3] + "</p></td>";
 			html += "<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
 			html += "</tr>";
-			$("#tbventas tbody").append(html);
-			// sumar();
-			//$("#btn-agregar").val(null);
-			// $("#producto").val(null);
+            $("#tbventas tbody").append(html);
+            sumar();
+			$("#btn-agregar").val(null);
+			$("#producto").val(null);
 		} else {
 			alert("seleccione un producto");
 		}
@@ -168,3 +195,25 @@ function generarNumero(numero) {
 		return '00000' + (Number(numero) + 1);
 	}
 }
+function agregarProducto(){
+    data = $('#btn-agregar').val();
+		if (data != '') {
+			infoproducto = data.split("*");
+			html = "<tr>";
+			html += "<td><input type='hidden' name= 'idproductos[]' value ='" + infoproducto[0] + "'>" + infoproducto[1] + "</td>";
+			html += "<td>" + infoproducto[2] + "</td>";
+			html += "<td><input type='hidden' name = 'precios[]' value ='" + infoproducto[3] + "'>" + infoproducto[3] + "</td>";
+			html += "<td>" + infoproducto[4] + "</td>";
+			html += "<td><input type = 'number' class='cantidades' name = 'cantidades[]' value = '1'></td>";
+			html += "<td><input type ='hidden' name = 'importes[]' value ='" + infoproducto[3] + "'><p>" + infoproducto[3] + "</p></td>";
+			html += "<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
+			html += "</tr>";
+            $("#tbventas tbody").append(html);
+            sumar();
+			$("#btn-agregar").val(null);
+			$("#producto").val(null);
+		} else {
+			alert("seleccione un producto");
+		}
+}
+

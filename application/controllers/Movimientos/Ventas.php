@@ -26,6 +26,7 @@ class Ventas extends BaseController
         $data = array(
             "tipocomprobantes" => $this->Ventas_model->getComprobantes(),
             "clientes" => $this->Clientes_model->getClientes(),
+            "productos" => $this->Ventas_model->getProcutosTodos(),
         );
         $this->loadView('Ventas', '/form/admin/ventas/add', $data);
     }

@@ -56,7 +56,7 @@ class Ventas_model extends CI_Model
     }
     public function getComprobantes()
     {
-        $this->db->where('estado','1');
+        $this->db->where('estado', '1');
         $resultados = $this->db->get("tipo_comprobante");
         return $resultados->result();
     }
@@ -65,6 +65,12 @@ class Ventas_model extends CI_Model
         $this->db->where('id_tipo_comprobante', $idcomprobante);
         $resultado = $this->db->get('tipo_comprobante');
         return $resultado->row();
+    }
+    public function getProcutosTodos()
+    {
+        $this->db->select('id_productos, codigo, nombre, precio, stock');
+        $this->db->where('estado', '1');
+        return $this->db->get('productos')->result();
     }
     public function getProductos($valor)
     {
@@ -101,7 +107,5 @@ class Ventas_model extends CI_Model
     public function guardar_detalle($data)
     {
         $this->db->insert('detalle_ventas', $data);
-        
     }
-    
 }

@@ -36,7 +36,7 @@
                                               <select name="comprobantes" id="comprobantes" class="form-control" required>
                                                   <option value="">Seleccione...</option>
                                                   <?php foreach ($tipocomprobantes as $tipocomprobante) : ?>
-                                                      <?php $datacomprobante = $tipocomprobante->id_tipo_comprobante . "*" . $tipocomprobante->cantidad . "*" . $tipocomprobante->igv . "*" . $tipocomprobante->serie. "*" . $tipocomprobante->numero_autorizacion. "*" . $tipocomprobante->nit_ci. "*" . $tipocomprobante->llave_dosificacion. "*" . $tipocomprobante->fecha_limite; ?>
+                                                      <?php $datacomprobante = $tipocomprobante->id_tipo_comprobante . "*" . $tipocomprobante->cantidad . "*" . $tipocomprobante->igv . "*" . $tipocomprobante->serie . "*" . $tipocomprobante->numero_autorizacion . "*" . $tipocomprobante->nit_ci . "*" . $tipocomprobante->llave_dosificacion . "*" . $tipocomprobante->fecha_limite; ?>
                                                       <option value="<?php echo $datacomprobante; ?>">
                                                           <?php echo $tipocomprobante->nombre ?></option>
                                                   <?php endforeach; ?>
@@ -74,7 +74,7 @@
                                               <input type="date" value="<?php echo date("Y-m-d") ?>" class="form-control" name="fecha" required>
                                           </div>
                                       </div>
-                                     
+
                                       <label for="Productos" class="col-md-12">Buscar y agregar productos o servicios</label>
                                       <br></br>
                                       <div class="form-group">
@@ -86,12 +86,16 @@
                                               <label for="">Codigo producto:</label>
                                               <input type="text" class="form-control" id="codigo_producto">
                                           </div>
-                                          <div class="col-md-2">
+                                          <div class="col-md-1">
                                               <label for="">&nbsp;</label>
                                               <button id="btn-agregar" type="button" class="btn btn-success btn-flat btn-block"><span class="fa fa-plus"></span> Agregar</button>
                                           </div>
+                                          <div class="col-md-1">
+                                              <label for="">&nbsp;</label>
+                                              <button class="btn btn-primary btn-flat btn-block" type="button" data-toggle="modal" data-target="#modal-productos"><span class="fa fa-search"></span> Buscar</button>
+                                          </div>
                                       </div>
-                                     <br></br>
+                                      <br></br>
                                       <table id="tbventas" class="table table-bordered table-striped table-hover">
                                           <thead>
                                               <tr>
@@ -155,12 +159,12 @@
 
 
   <div class="modal fade" id="modal-default">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Lita de Clientes</h4>
+                  <h4 class="modal-title">Lista de Clientes</h4>
               </div>
               <div class="modal-body">
                   <table id="example1" class="table table-bordered table-striped table-hover">
@@ -185,6 +189,56 @@
 
                                       <td>
                                           <button type="button" class="btn btn-success btn-check" value="<?php echo $dataCliente ?>"><span class="fa fa-check"></span></button>
+                                      </td>
+                                  </tr>
+                              <?php endforeach; ?>
+                          <?php endif; ?>
+
+                      </tbody>
+                  </table>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cerrar</button>
+              </div>
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <div class="modal fade" id="modal-productos">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Lista de Productos</h4>
+              </div>
+              <div class="modal-body">
+                  <table id="tablaProdcutos" class="table table-bordered table-striped table-hover">
+                      <thead>
+                          <tr>
+                              <th>Codgio</th>
+                              <th>Nombre</th>
+                              <th>Precio</th>
+                              <th>Stock</th>
+                              <th>Opcion</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <?php if (!empty($productos)) : ?>
+                              <?php foreach ($productos as $producto) : ?>
+                                  <tr>
+                                      <td><?php echo $producto->codigo; ?></td>
+                                      <td><?php echo $producto->nombre; ?></td>
+                                      <td><?php echo $producto->precio; ?></td>
+                                      <td><?php echo $producto->stock; ?></td>
+                                      <?php $dataproducto = $producto->id_productos . "*" . $producto->codigo . "*" . $producto->nombre . "*" . $producto->precio . "*" . $producto->stock; ?>
+
+                                      <td>
+                                          <button type="button" class="btn btn-success btn-check-producto" value="<?php echo $dataproducto ?>"><span class="fa fa-check"></span></button>
                                       </td>
                                   </tr>
                               <?php endforeach; ?>

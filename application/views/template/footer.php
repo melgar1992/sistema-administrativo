@@ -30,7 +30,6 @@
     <script src="<?php echo base_url(); ?>assets/template/datatables-export/js/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/template/datatables-export/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/template/datatables-export/js/jszip.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/template/datatables-export/js/pdfmake.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/template/datatables-export/js/vfs_fonts.js"></script>
     <!-- Sweet Alert -->
     <script src="<?php echo base_url(); ?>assets/template/sweetalert2/sweetalert2.all.min.js"></script>
