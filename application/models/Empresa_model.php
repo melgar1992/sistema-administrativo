@@ -3,17 +3,19 @@ class Empresa_model extends CI_Model
 {
     public function getEmpresa()
     {
-        $this->db->where('id_empresa', '1');
+        $this->db->where('estado', '1');
         return  $this->db->get('empresa')->row();
     }
     public function guardarEmpresa($datosEmpresa)
     {
-        $this->db->where('nombre', 'Factura');
-        $this->db->where('estado','1');
-        $resultado = $this->db->get('empresa')->row();
+        $datosEmpresa['estado'] = '1';
+        $this->db->where('estado', '1');
+        $resultado = $this->db->get('empresa')->row_array();
         if (isset($resultado)) {
             $this->db->where('id_empresa', '1');
-            return $this->db->update('empresa', $datosEmpresa);
+            $resultado['estado'] = '0';
+            $this->db->update('empresa', $resultado);
+            return $this->db->insert('empresa', $datosEmpresa);
         } else {
             return $this->db->insert('empresa', $datosEmpresa);
         }
@@ -26,7 +28,7 @@ class Empresa_model extends CI_Model
     public function guardarDatosFactura($datosFactura)
     {
         $this->db->where('nombre', 'Factura');
-        $this->db->where('estado'.'1');
+        $this->db->where('estado' . '1');
         $resultado = $this->db->get('tipo_comprobante')->row();
         if (isset($resultado)) {
             $this->db->where('nombre', 'Factura');

@@ -40,7 +40,7 @@
                                  <div class="form-group <?php echo !empty(form_error("nombre")) ? 'has-error' : ''; ?>">
                                      <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de la empresa <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <input type="text" name="nombre" value="<?php echo !empty(set_value("nombre")) ? set_value('nombre') : $Configuracion->nombres ; ?>" id="nombre" required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre">
+                                         <input type="text" name="nombre" value="<?php echo !empty(set_value("nombre")) ? set_value('nombre') : !empty($Configuracion) ? $Configuracion->nombres  : ''; ?>" id="nombre" required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre">
 
 
                                      </div>
@@ -48,29 +48,29 @@
                                  <div class="form-group">
                                      <label for="direccion" class="control-label col-md-3 col-sm-3 col-xs-12">Direccion <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <textarea name="direccion" maxlength="200" style="margin: 0px; width: 283px; height: 61px;" type='text' rows="2" id="direccion" placeholder="Direccion de la empresa"><?php echo !empty(set_value("direccion")) ? set_value('direccion') : $Configuracion->direccion ; ?></textarea>
+                                         <textarea name="direccion" maxlength="200" style="margin: 0px; width: 283px; height: 61px;" type='text' rows="2" id="direccion" placeholder="Direccion de la empresa"><?php echo !empty(set_value("direccion")) ? set_value('direccion') : !empty($Configuracion) ? $Configuracion->direccion : ''; ?></textarea>
                                      </div>
 
                                  </div>
                                  <div class="form-group">
                                      <label for="actividad" class="control-label col-md-3 col-sm-3 col-xs-12">Actividad economica <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <input type="text" name="actividad" value="<?php echo !empty(set_value("actividad")) ? set_value('actividad') : $Configuracion->actividad_economica ; ?>" id="actividad" required="required" class="form-group col-md-7 col-xs-12" placeholder="Transporte, servicios, etc">
+                                         <input type="text" name="actividad" value="<?php echo !empty(set_value("actividad")) ? set_value('actividad') : !empty($Configuracion) ? $Configuracion->actividad_economica : ''; ?>" id="actividad" required="required" class="form-group col-md-7 col-xs-12" placeholder="Transporte, servicios, etc">
 
                                      </div>
                                  </div>
                                  <div class="form-group">
                                      <label for="telefono" class="control-label col-md-3 col-sm-3 col-xs-12">Numero de telefono <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <input type="number" name="telefono" value="<?php echo !empty(set_value("telefono")) ? set_value('telefono') : $Configuracion->numero_telefono ; ?>" id="telefono" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el telefono">
+                                         <input type="number" name="telefono" value="<?php echo !empty(set_value("telefono")) ? set_value('telefono') : !empty($Configuracion) ? $Configuracion->numero_telefono : ''; ?>" id="telefono" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el telefono">
 
                                      </div>
                                  </div>
-              
+
                                  <div class="form-group">
                                      <label for="email" class="control-label col-md-3 col-sm-3 col-xs-12">Correo electronico <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <input type="text" name="email" value="<?php echo !empty(set_value("email")) ? set_value('email') : $Configuracion->email ; ?>" id="email" required="required" class="form-group col-md-7 col-xs-12" placeholder="ejemlp@hotmail.com">
+                                         <input type="text" name="email" value="<?php echo !empty(set_value("email")) ? set_value('email') : !empty($Configuracion) ? $Configuracion->email : ''; ?>" id="email" required="required" class="form-group col-md-7 col-xs-12" placeholder="ejemlp@hotmail.com">
 
                                      </div>
                                  </div>
@@ -122,7 +122,7 @@
                                  <div class="form-group <?php echo !empty(form_error("numero_autorizacion")) ? 'has-error' : ''; ?>">
                                      <label for="numero_autorizacion" class="control-label col-md-3 col-sm-3 col-xs-12">Numero de autorizacion <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <input type="text" name="numero_autorizacion" value="<?php echo !empty(set_value("numero_autorizacion")) ? set_value('numero_autorizacion') : $Datos_factura->numero_autorizacion ; ?>" id="numero_autorizacion" required="required" class="form-group col-md-7 col-xs-12" placeholder="Numero de docificacion">
+                                         <input type="text" name="numero_autorizacion" value="<?php echo !empty(set_value("numero_autorizacion")) ? set_value('numero_autorizacion') : !empty($Datos_factura) ? $Datos_factura->numero_autorizacion : ''; ?>" id="numero_autorizacion" required="required" class="form-group col-md-7 col-xs-12" placeholder="Numero de docificacion">
 
 
                                      </div>
@@ -130,7 +130,7 @@
                                  <div class="form-group">
                                      <label for="nit_ci" class="control-label col-md-3 col-sm-3 col-xs-12">nit <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <input type="number" name="nit_ci" value="<?php echo !empty(set_value("nit_ci")) ? set_value('nit_ci') : $Datos_factura->nit_ci ; ?>" id="nit_ci" required="required" class="form-group col-md-7 col-xs-12" placeholder="Nit de la empresa">
+                                         <input type="number" name="nit_ci" value="<?php echo !empty(set_value("nit_ci")) ? set_value('nit_ci') : !empty($Datos_factura) ?  $Datos_factura->nit_ci : ''; ?>" id="nit_ci" required="required" class="form-group col-md-7 col-xs-12" placeholder="Nit de la empresa">
 
                                      </div>
 
@@ -138,14 +138,14 @@
                                  <div class="form-group">
                                      <label for="llave_dosificacion" class="control-label col-md-3 col-sm-3 col-xs-12">Llave dosificacion <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <textarea name="llave_dosificacion" style="margin: 0px; width: 283px; height: 61px;" maxlength="200" type='text' rows="2" id="text" placeholder="Llave dosificacion de la empresa"><?php echo !empty(set_value("llave_dosificacion")) ? set_value('llave_dosificacion') : $Datos_factura->llave_dosificacion ; ?></textarea>
+                                         <textarea name="llave_dosificacion" style="margin: 0px; width: 283px; height: 61px;" maxlength="200" type='text' rows="2" id="text" placeholder="Llave dosificacion de la empresa"><?php echo !empty(set_value("llave_dosificacion")) ? set_value('llave_dosificacion') : !empty($Datos_factura) ?  $Datos_factura->llave_dosificacion : ''; ?></textarea>
 
                                      </div>
                                  </div>
                                  <div class="form-group">
                                      <label for="fecha" class="control-label col-md-3 col-sm-3 col-xs-12">Fecha limite emision <span class="required">*</span></label>
                                      <div class="col-md-8 col-sm-6 col-xs-12">
-                                         <input type="date" name="fecha" id="fecha" value="<?php echo !empty(set_value('fecha')) ? set_value('fecha') : $Datos_factura->fecha_limite ; ?>" required="required" class="form-group col-md-7 col-xs-12" >
+                                         <input type="date" name="fecha" id="fecha" value="<?php echo !empty(set_value('fecha')) ? set_value('fecha') : !empty($Datos_factura) ?  $Datos_factura->fecha_limite : ''; ?>" required="required" class="form-group col-md-7 col-xs-12">
 
                                      </div>
                                  </div>
