@@ -117,25 +117,25 @@
                                           <div class="col-md-3">
                                               <div class="input-group">
                                                   <span class="input-group-addon">Subtotal:</span>
-                                                  <input type="text" class="form-control" placeholder="Username" name="subtotal" readonly="readonly">
+                                                  <input type="text" class="form-control" placeholder="" value="0.00" name="subtotal" readonly="readonly">
                                               </div>
                                           </div>
                                           <div class="col-md-3">
                                               <div class="input-group">
                                                   <span class="input-group-addon">IGV:</span>
-                                                  <input type="text" class="form-control" placeholder="Username" name="igv" readonly="readonly">
+                                                  <input type="text" class="form-control" placeholder="" value="0.00" name="igv" readonly="readonly">
                                               </div>
                                           </div>
                                           <div class="col-md-3">
                                               <div class="input-group">
                                                   <span class="input-group-addon">Descuento:</span>
-                                                  <input type="text" class="form-control" placeholder="Username" name="descuento" value="0.00" readonly="readonly">
+                                                  <input type="text" class="form-control" placeholder="" value="0.00" name="descuento" value="0.00" readonly="readonly">
                                               </div>
                                           </div>
                                           <div class="col-md-3">
                                               <div class="input-group">
                                                   <span class="input-group-addon">Total:</span>
-                                                  <input type="text" class="form-control" placeholder="Username" name="total" readonly="readonly">
+                                                  <input type="text" class="form-control" placeholder="" value="0.00" name="total" readonly="readonly">
                                               </div>
                                           </div>
                                       </div>
