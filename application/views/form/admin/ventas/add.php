@@ -59,7 +59,7 @@
 
                                       </div>
                                       <div class="form-group">
-                                          <div class="col-md-6">
+                                          <div class="col-md-3">
                                               <label for="">Cliente:</label>
                                               <div class="input-group">
                                                   <input type="hidden" name="idcliente" id="idcliente">
@@ -68,6 +68,10 @@
                                                       <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-default"><span class="fa fa-search"></span> Buscar</button>
                                                   </span>
                                               </div><!-- /input-group -->
+                                          </div>
+                                          <div class="col-md-3">
+                                                    <label for="descuento">Descuento :</label>
+                                                    <input type="number" name="descuento_porcentaje" id="descuento_porcentaje" class="form-control">
                                           </div>
                                           <div class="col-md-3">
                                               <label for="">Fecha:</label>
@@ -122,7 +126,7 @@
                                           </div>
                                           <div class="col-md-3">
                                               <div class="input-group">
-                                                  <span class="input-group-addon">IGV:</span>
+                                                  <span class="input-group-addon">IVA:</span>
                                                   <input type="text" class="form-control" placeholder="" value="0.00" name="igv" readonly="readonly">
                                               </div>
                                           </div>

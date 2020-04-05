@@ -47,7 +47,7 @@
                                 <div class="form-group <?php echo !empty(form_error("nombre")) ? 'has-error' : ''; ?>">
                                     <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="nombre" value="<?php echo set_value('nombre') ?>" id=nombre required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre de la Categoria">
+                                        <input type="text" name="nombre" value="<?php echo set_value('nombre') ?>" id=nombre required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre del producto">
                                         <?php echo form_error("nombre", "<span class='help-block col-md-4 cols-xs-12 '>", "</span>"); ?>
                                     </div>
                                 </div>
@@ -61,14 +61,14 @@
                                 <div class="form-group <?php echo !empty(form_error("precio")) ? 'has-error' : ''; ?>">
                                     <label for="precio" class="control-label col-md-3 col-sm-3 col-xs-12">precio <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="number" step="0.01" name="precio" value="<?php echo set_value('precio') ?>" id="precio" required="required" class="form-group col-md-7 col-xs-12">
+                                        <input type="number" step="0.01" name="precio" value="<?php echo set_value('precio') ?>" id="precio" required="required" placeholder="Precio del producto" class="form-group col-md-7 col-xs-12">
                                         <?php echo form_error("precio", "<span class='help-block col-md-4 cols-xs-12 '>", "</span>"); ?>
                                     </div>
                                 </div>
                                 <div class="form-group <?php echo !empty(form_error("stock")) ? 'has-error' : ''; ?>">
                                     <label for="stock" class="control-label col-md-3 col-sm-3 col-xs-12">stock <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="number" name="stock" value="<?php echo set_value('stock') ?>" id="stock" required="required" class="form-group col-md-7 col-xs-12">
+                                        <input type="number" name="stock" value="<?php echo set_value('stock') ?>" id="stock" required="required" placeholder="Cantidad de stock del producto" class="form-group col-md-7 col-xs-12">
                                         <?php echo form_error("stock", "<span class='help-block col-md-4 cols-xs-12 '>", "</span>"); ?>
                                     </div>
                                 </div>

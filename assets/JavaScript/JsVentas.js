@@ -1,25 +1,25 @@
 $(document).ready(function () {
-    var base_url = $("#base_url").val();
-    $('#tablaProdcutos').DataTable({
-        responsive: "true",
-        "language": {
-          'lengthMenu': "Mostrar _MENU_ registros",
-          "zeroRecords": "No se encontraron resultados",
-          "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registro",
-          "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-          "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-          "sSearch": "Buscar",
-          "oPaginate": {
-            "sFirst": "Primero",
-            "sLast": "Ultimo",
-            "sNext": "Siguiente",
-            "sPrevious": "Anterior",
+	var base_url = $("#base_url").val();
+	$('#tablaProdcutos').DataTable({
+		responsive: "true",
+		"language": {
+			'lengthMenu': "Mostrar _MENU_ registros",
+			"zeroRecords": "No se encontraron resultados",
+			"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registro",
+			"infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+			"infoFiltered": "(filtrado de un total de _MAX_ registros)",
+			"sSearch": "Buscar",
+			"oPaginate": {
+				"sFirst": "Primero",
+				"sLast": "Ultimo",
+				"sNext": "Siguiente",
+				"sPrevious": "Anterior",
 
-          },
-          "sProcesing": "Procesando...",
-        }
+			},
+			"sProcesing": "Procesando...",
+		}
 
-      });
+	});
 	$('#comprobantes').on('change', function () {
 		option = $(this).val();
 
@@ -44,7 +44,10 @@ $(document).ready(function () {
 		sumar();
 
 	})
+	$('#descuento_porcentaje').on('change', function () {
+		sumar();
 
+	});
 	$(document).on("click", ".btn-check", function () {
 
 		cliente = $(this).val();
@@ -52,12 +55,12 @@ $(document).ready(function () {
 		$("#idcliente").val(infocliente[0]);
 		$("#cliente").val(infocliente[1]);
 		$("#modal-default").modal("hide");
-    });
-    $(document).on("click", ".btn-check-producto", function () {
+	});
+	$(document).on("click", ".btn-check-producto", function () {
 
 		producto = $(this).val();
-        $("#btn-agregar").val(producto);
-        agregarProducto();
+		$("#btn-agregar").val(producto);
+		agregarProducto();
 		$("#modal-productos").modal("hide");
 	});
 	$("#producto").autocomplete({
@@ -79,8 +82,8 @@ $(document).ready(function () {
 			data = ui.item.id_productos + "*" + ui.item.codigo + "*" + ui.item.label + "*" + ui.item.precio + "*" + ui.item.stock;
 			$("#btn-agregar").val(data);
 		},
-    });
-    $("#codigo_producto").autocomplete({
+	});
+	$("#codigo_producto").autocomplete({
 		source: function (request, response) {
 			$.ajax({
 				url: base_url + "Movimientos/Ventas/getProductosCodigo",
@@ -113,8 +116,8 @@ $(document).ready(function () {
 			html += "<td><input type ='hidden' name = 'importes[]' value ='" + infoproducto[3] + "'><p>" + infoproducto[3] + "</p></td>";
 			html += "<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
 			html += "</tr>";
-            $("#tbventas tbody").append(html);
-            sumar();
+			$("#tbventas tbody").append(html);
+			sumar();
 			$("#btn-agregar").val(null);
 			$("#producto").val(null);
 		} else {
@@ -163,15 +166,19 @@ $(document).ready(function () {
 
 function sumar() {
 	subtotal = 0;
+	porcentaje_descuento = $('#descuento_porcentaje').val();
 	$("#tbventas  tbody tr").each(function () {
 		subtotal = subtotal + Number($(this).find("td:eq(5)").text());
 	});
 	$("input[name=subtotal]").val(subtotal.toFixed(2));
+	porcentaje_descuento = (porcentaje_descuento / 100);
+	$('input[name=descuento]').val((subtotal * porcentaje_descuento).toFixed(2));
 	porcentaje = $("#igv").val();
-	igv = subtotal * (porcentaje / 100);
+	subtotal = subtotal - (subtotal * porcentaje_descuento);
+	descuento = subtotal * porcentaje_descuento;
+	total = subtotal - descuento;
+	igv = total * (porcentaje / 100);
 	$("input[name=igv]").val(igv.toFixed(2));
-	descuento = $("input[name=descuento]").val();
-	total = subtotal + igv - descuento;
 	$("input[name=total]").val(total.toFixed(2));
 }
 
@@ -195,25 +202,25 @@ function generarNumero(numero) {
 		return '00000' + (Number(numero) + 1);
 	}
 }
-function agregarProducto(){
-    data = $('#btn-agregar').val();
-		if (data != '') {
-			infoproducto = data.split("*");
-			html = "<tr>";
-			html += "<td><input type='hidden' name= 'idproductos[]' value ='" + infoproducto[0] + "'>" + infoproducto[1] + "</td>";
-			html += "<td>" + infoproducto[2] + "</td>";
-			html += "<td><input type='hidden' name = 'precios[]' value ='" + infoproducto[3] + "'>" + infoproducto[3] + "</td>";
-			html += "<td>" + infoproducto[4] + "</td>";
-			html += "<td><input type = 'number' class='cantidades' name = 'cantidades[]' value = '1'></td>";
-			html += "<td><input type ='hidden' name = 'importes[]' value ='" + infoproducto[3] + "'><p>" + infoproducto[3] + "</p></td>";
-			html += "<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
-			html += "</tr>";
-            $("#tbventas tbody").append(html);
-            sumar();
-			$("#btn-agregar").val(null);
-			$("#producto").val(null);
-		} else {
-			alert("seleccione un producto");
-		}
+function agregarProducto() {
+	data = $('#btn-agregar').val();
+	if (data != '') {
+		infoproducto = data.split("*");
+		html = "<tr>";
+		html += "<td><input type='hidden' name= 'idproductos[]' value ='" + infoproducto[0] + "'>" + infoproducto[1] + "</td>";
+		html += "<td>" + infoproducto[2] + "</td>";
+		html += "<td><input type='hidden' name = 'precios[]' value ='" + infoproducto[3] + "'>" + infoproducto[3] + "</td>";
+		html += "<td>" + infoproducto[4] + "</td>";
+		html += "<td><input type = 'number' class='cantidades' name = 'cantidades[]' value = '1'></td>";
+		html += "<td><input type ='hidden' name = 'importes[]' value ='" + infoproducto[3] + "'><p>" + infoproducto[3] + "</p></td>";
+		html += "<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
+		html += "</tr>";
+		$("#tbventas tbody").append(html);
+		sumar();
+		$("#btn-agregar").val(null);
+		$("#producto").val(null);
+	} else {
+		alert("seleccione un producto");
+	}
 }
 
