@@ -30,7 +30,7 @@ class Empresa_model extends CI_Model
         $datosFactura['nombre'] = 'Factura';
         $datosFactura['igv'] = '13';
         $this->db->where('nombre', 'Factura');
-        $this->db->where('estado' . '1');
+        $this->db->where('estado' , '1');
         $resultado = $this->db->get('tipo_comprobante')->row_array();
         if (isset($resultado)) {
             $resultado['estado'] = '0';
