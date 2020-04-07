@@ -41,8 +41,7 @@ class Facturacion extends BaseController
             $this->loadView('Ventas', '/form/admin/ventas/facturacion_prueba', $data);
         } else {
             $this->session->set_flashdata("error", "No se puede generar la factura, por no se a detallado la informacion de la empresa");
-            $data = array();
-            $this->loadView('Ventas', '/form/admin/ventas/facturacion_prueba', $data);
+            redirect(base_url()."Movimientos/Facturacion");
         }
     }
 }
