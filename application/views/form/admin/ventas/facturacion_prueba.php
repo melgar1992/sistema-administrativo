@@ -59,9 +59,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group <?php echo !empty(form_error("fecha")) ? 'has-error' : ''; ?>">
-                                    <label for="fecha" class="control-label col-md-3 col-sm-3 col-xs-12">Fecha  <span class="required">*</span></label>
+                                    <label for="fecha" class="control-label col-md-3 col-sm-3 col-xs-12">Fecha <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="date"  name="fecha" value="<?php echo set_value('fecha') ?>" id="fecha" required="required" class="form-group col-md-7 col-xs-12">
+                                        <input type="date" name="fecha" value="<?php echo set_value('fecha') ?>" id="fecha" required="required" class="form-group col-md-7 col-xs-12">
                                         <?php echo form_error("fecha", "<span class='help-block col-md-4 cols-xs-12 '>", "</span>"); ?>
                                     </div>
                                 </div>
@@ -75,11 +75,11 @@
                                 <div class="form-group <?php echo !empty(form_error("llave_dosificacion")) ? 'has-error' : ''; ?>">
                                     <label for="llave_dosificacion" class="control-label col-md-3 col-sm-3 col-xs-12">Llave de dosificacion <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text"  name="llave_dosificacion" value="<?php echo set_value('llave_dosificacion') ?>" id="llave_dosificacion" required="required" class="form-group col-md-7 col-xs-12">
+                                        <input type="text" name="llave_dosificacion" value="<?php echo set_value('llave_dosificacion') ?>" id="llave_dosificacion" required="required" class="form-group col-md-7 col-xs-12">
                                         <?php echo form_error("llave_dosificacion", "<span class='help-block col-md-4 cols-xs-12 '>", "</span>"); ?>
                                     </div>
                                 </div>
-                                
+
                                 <br>
                                 <br>
 
@@ -94,7 +94,15 @@
 
                             </form>
 
+
                             <hr>
+                            <div class="col-md-12 text-center ">
+                                <?php if(isset($codigoControl)) {; ?>
+                                <?php var_dump($codigoControl); ?>
+                                <img src="<?php echo base_url() . $codigoQrUrl ?>" alt="Codigo QR" height="150$" width="150$">
+                                <?php }?>
+                            </div>
+
                             <!-- /.box -->
                         </div>
                     </div>

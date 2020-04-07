@@ -27,15 +27,17 @@ class Empresa_model extends CI_Model
     }
     public function guardarDatosFactura($datosFactura)
     {
+        $datosFactura['nombre'] = 'Factura';
+        $datosFactura['igv'] = '13';
         $this->db->where('nombre', 'Factura');
         $this->db->where('estado' . '1');
-        $resultado = $this->db->get('tipo_comprobante')->row();
+        $resultado = $this->db->get('tipo_comprobante')->row_array();
         if (isset($resultado)) {
+            $resultado['estado'] = '0';
             $this->db->where('nombre', 'Factura');
-            return $this->db->update('tipo_comprobante', $datosFactura);
+            $this->db->update('tipo_comprobante', $resultado);
+            return $this->db->insert('tipo_comprobante', $datosFactura);
         } else {
-            $datosFactura['nombre'] = 'Factura';
-            $datosFactura['igv'] = '13';
             return $this->db->insert('tipo_comprobante', $datosFactura);
         }
     }

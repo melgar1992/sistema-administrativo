@@ -174,7 +174,6 @@ function sumar() {
 	porcentaje_descuento = (porcentaje_descuento / 100);
 	$('input[name=descuento]').val((subtotal * porcentaje_descuento).toFixed(2));
 	porcentaje = $("#igv").val();
-	subtotal = subtotal - (subtotal * porcentaje_descuento);
 	descuento = subtotal * porcentaje_descuento;
 	total = subtotal - descuento;
 	igv = total * (porcentaje / 100);
